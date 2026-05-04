@@ -67,22 +67,34 @@ public class JPMUpdater {
     }
 
     private static void launchJPM(String[] args) {
-        try {
-            List<String> command = new ArrayList<>();
-            command.add("java");
-            command.add("-jar");
-            command.add(LOCAL_JAR_PATH);
+    try {
+        Path currentJar = Paths.get(LOCAL_JAR_PATH);
+        Path newJar = Paths.get(NEW_JAR_PATH);
 
-            command.addAll(Arrays.asList(args));
+        if (Files.exists(newJar)) {
+            System.out.println("Applying pending update...");
 
-            new ProcessBuilder(command)
-                    .inheritIO()
-                    .start()
-                    .waitFor();
+            Files.deleteIfExists(currentJar);
+            Files.move(newJar, currentJar, StandardCopyOption.REPLACE_EXISTING);
 
-        } catch (Exception e) {
-            System.err.println("Failed to launch JPM");
-            e.printStackTrace();
+            System.out.println("Update applied successfully.");
         }
+
+        List<String> command = new ArrayList<>();
+        command.add("java");
+        command.add("-jar");
+        command.add(LOCAL_JAR_PATH);
+
+        command.addAll(Arrays.asList(args));
+
+        new ProcessBuilder(command)
+                .inheritIO()
+                .start()
+                .waitFor();
+
+    } catch (Exception e) {
+        System.err.println("Failed to launch JPM");
+        e.printStackTrace();
     }
+}
 }
