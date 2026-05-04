@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JPMUpdater:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JPMUpdater_jar</output-path>
+    <root id="archive" name="JPMUpdater.jar">
+      <element id="module-output" name="JPMUpdater" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../SimpleBank/libs/gson-2.14.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
