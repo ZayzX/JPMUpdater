@@ -13,7 +13,7 @@ public class JPMUpdater {
 
     private static final String LOCAL_JAR_PATH = "wrapper/JavaPackageManager.jar";
     private static final String NEW_JAR_PATH = "wrapper/JavaPackageManager-new.jar";
-    private static final String LOCAL_VERSION = "1.0.2";
+    private static final String LOCAL_VERSION = "1.0.3";
 
     public static void main(String[] args) {
         try {
